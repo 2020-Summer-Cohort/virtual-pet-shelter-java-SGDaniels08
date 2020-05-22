@@ -28,8 +28,11 @@ public class VirtualPet {
 
     public void tick() {
         hunger += 10;
+        if (hunger > 100) { hunger = 100; }
         thirst += 10;
+        if (thirst > 100) { thirst = 100; }
         boredom += 5;
+        if (boredom > 100) { boredom = 100; }
     }
 
     public void eat() {

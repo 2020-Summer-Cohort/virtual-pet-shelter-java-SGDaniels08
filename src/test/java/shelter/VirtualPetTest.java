@@ -22,7 +22,7 @@ public class VirtualPetTest {
     public void checkEatMethod() {
         VirtualPet testPet = new VirtualPet("Zarflak", " smells like a gobling should.");
         testPet.eat();
-        assertEquals(0, testPet.getHunger());
+        assertEquals(0, testPet.getThirst());
     }
     @Test
     public void checkDrinkMethod() {
@@ -44,7 +44,7 @@ public class VirtualPetTest {
         VirtualPet testPet = new VirtualPet("Zarflak", " smells like a goblin should.",
                 50, 55, 20, 60);
         testPet.tick();
-        assertEquals(60, testPet.getHunger());
+        assertEquals(60, testPet.getThirst());
         assertEquals(65, testPet.getThirst());
         assertEquals(25, testPet.getBoredom());
         assertEquals(60, testPet.getAggression());

@@ -22,7 +22,7 @@ public class VirtualPetShelterApp {
         int choice;
         boolean keepGobbing = true;
 
-        while(keepGobbing) {
+        while (keepGobbing) {
             System.out.println("Welcome to our Virtual Goblin Pet Shelter!");
             System.out.println("What would you like to do here today?\n");
             displayPets(goblinShelter);
@@ -35,7 +35,8 @@ public class VirtualPetShelterApp {
             else if (choice == 2) { goblinShelter.allPetsDrink(); }
             else if (choice == 3) {
                 System.out.println("Who do you want to play with?");
-                displayPetNames(goblinShelter);
+                displayPetNamesAndDescriptions(goblinShelter);
+                System.out.print("Enter the [ name ] of the goblin you want: ");
                 String name = input.nextLine();
                 if (goblinShelter.contains(name)) {
                     VirtualPet playPet = goblinShelter.getPet(name);
@@ -47,12 +48,14 @@ public class VirtualPetShelterApp {
             }
             else if (choice == 4) {
                 System.out.println("Which two goblins are you sending to the arena?");
-                displayPetNames(goblinShelter);
-                System.out.print("Fighter 1 : ");
+                displayPetNamesAndDescriptions(goblinShelter);
+                System.out.print("Enter the [ name ] of Fighter 1 : ");
                 String fighter1 = input.nextLine();
-                System.out.print("Fighter 2 : ");
+                System.out.print("Enter the [ name ] of Fighter 2 : ");
                 String fighter2 = input.nextLine();
-                if (goblinShelter.contains(fighter1) && goblinShelter.contains(fighter2)) {
+                if (fighter1.equals(fighter2)) {
+                    System.out.println(fighter1 + " can't fight itself! Let's start over.");
+                } else if (goblinShelter.contains(fighter1) && goblinShelter.contains(fighter2)) {
                     goblinShelter.fightWith(fighter1, fighter2);
                 } else {
                     System.out.println("At least one of those goblins isn't here. Let's start over...");
@@ -61,7 +64,8 @@ public class VirtualPetShelterApp {
             }
             else if (choice == 5) {
                 System.out.println("Thank you for your decision! Which pet do you want to adopt?");
-                displayPetNames(goblinShelter);
+                displayPetNamesAndDescriptions(goblinShelter);
+                System.out.print("Enter the [ name ] of the goblin you want: ");
                 String adopted = input.nextLine();
                 if (goblinShelter.contains(adopted)) {
                     System.out.println("Thank you for adopting " + adopted + "!");
@@ -107,6 +111,7 @@ public class VirtualPetShelterApp {
         System.out.println("0 : Leave");
         System.out.print("Choose --> ");
     }
+
     public static void displayPets(VirtualPetShelter anyShelter) {
         Map<String, VirtualPet> shelter = anyShelter.retrieveAllPets();
         for (Entry<String, VirtualPet> entry : shelter.entrySet()) {
@@ -119,11 +124,20 @@ public class VirtualPetShelterApp {
             System.out.print(petToShow.getAggression() + "\n\n");
         }
     }
+
     private static void displayPetNames(VirtualPetShelter anyShelter) {
         Map<String, VirtualPet> shelter = anyShelter.retrieveAllPets();
         for (Entry<String, VirtualPet> entry : shelter.entrySet()) {
             VirtualPet petToShow = entry.getValue();
             System.out.println("[ " + petToShow.getName() + " ]");
+        }
+    }
+
+    private static void displayPetNamesAndDescriptions(VirtualPetShelter anyShelter) {
+        Map<String, VirtualPet> shelter = anyShelter.retrieveAllPets();
+        for (Entry<String, VirtualPet> entry : shelter.entrySet()) {
+            VirtualPet petToShow = entry.getValue();
+            System.out.println("[ " + petToShow.getName() + " ]" + petToShow.getDescription());
         }
     }
 }

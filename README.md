@@ -17,7 +17,7 @@ Created VirtualPet class w/ TDD
 
 Created VirtualPetShelter class w/ TDD
 
-Completed project (?)
+Completed project -- added description to displayPets()
 
 -> Look at stretch goals
 -> Incorporate checkStats()

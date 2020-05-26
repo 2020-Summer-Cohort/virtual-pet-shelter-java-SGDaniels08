@@ -121,7 +121,8 @@ public class VirtualPetShelterApp {
             System.out.print(petToShow.getHunger() + "\t\t");
             System.out.print(petToShow.getThirst() + "\t\t");
             System.out.print(petToShow.getBoredom() + "\t\t");
-            System.out.print(petToShow.getAggression() + "\n\n");
+            System.out.print(petToShow.getAggression() + "\n");
+            System.out.println("who" + petToShow.getDescription() +"\n");
         }
     }
 
